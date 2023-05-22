@@ -3,4 +3,4 @@ dump_dependencies:
 
 install_dependencies:
 	pip3 install -r requirements.txt
-	sudo pacman -Syu imagemagick ffmpeg pdftk
+	sudo pacman -Syu imagemagick ffmpeg pdftk ghostscript
