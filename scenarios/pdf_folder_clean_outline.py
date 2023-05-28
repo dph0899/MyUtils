@@ -3,8 +3,12 @@ process the pdfs and output cleaned pdfs"""
 import os
 import shutil
 
+from dotenv import load_dotenv
+
 from common.folder import delete_folder_content
 from pdf import image_magick, pdftk
+
+load_dotenv()
 
 
 def process_pdfs(pdfs_folder_path: str):
@@ -77,7 +81,7 @@ def process_pdfs(pdfs_folder_path: str):
     # 4.2: Create clean pdfs
     pngs_folder_path = os.path.join(pdfs_folder_path, "pngs")
     os.makedirs(pngs_folder_path, exist_ok=True)
-    temp_folder_path = '/data/tmp'
+    temp_folder_path = os.getenv('MAGICK_TEMPORARY_PATH')
     for file_name in os.listdir(original_pdfs_folder_path):
         if file_name.endswith(".pdf"):
             pdf_file_path = os.path.join(original_pdfs_folder_path, file_name)
