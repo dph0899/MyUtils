@@ -1,13 +1,12 @@
 """Work with ImageMagick."""
 import os
-import shutil
 import subprocess
 
 
 def convert_pdf_to_pngs(pdf_file_path: str, pngs_folder_path: str, temp_folder_path: str):
     """Convert a PDF file to PNGs using ImageMagick."""
     env = os.environ.copy()
-    env['TMPDIR'] = temp_folder_path
+    env['MAGICK_TEMPORARY_PATH'] = temp_folder_path
     try:
         subprocess.run(
             [
