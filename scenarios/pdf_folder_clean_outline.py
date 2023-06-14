@@ -79,19 +79,19 @@ def process_pdfs(pdfs_folder_path: str):
     os.makedirs(clean_pdfs_folder_path, exist_ok=True)
 
     # 4.2: Create clean pdfs
-    pngs_folder_path = os.path.join(pdfs_folder_path, "pngs")
-    os.makedirs(pngs_folder_path, exist_ok=True)
+    images_folder_path = os.path.join(pdfs_folder_path, "images")
+    os.makedirs(images_folder_path, exist_ok=True)
     temp_folder_path = os.getenv('MAGICK_TEMPORARY_PATH')
     for file_name in os.listdir(original_pdfs_folder_path):
         if file_name.endswith(".pdf"):
             pdf_file_path = os.path.join(original_pdfs_folder_path, file_name)
             output_pdf_file_path = os.path.join(
                 clean_pdfs_folder_path, file_name)
-            image_magick.convert_pdf_to_pngs(
-                pdf_file_path, pngs_folder_path, temp_folder_path)
-            image_magick.create_pdf_from_pngs(
-                pngs_folder_path, output_pdf_file_path)
-            delete_folder_content(pngs_folder_path)
+            image_magick.convert_pdf_to_images(
+                pdf_file_path, images_folder_path, temp_folder_path)
+            image_magick.create_pdf_from_images(
+                images_folder_path, output_pdf_file_path)
+            delete_folder_content(images_folder_path)
             delete_folder_content(temp_folder_path)
 
     # Step 5: Create dump files for clean pdfs
