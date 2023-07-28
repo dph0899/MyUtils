@@ -4,25 +4,25 @@
 git clone https://github.com/go-nv/goenv.git ~/.goenv
 ```
 ```
-echo -e "\n\n# GOENV" >> ~/.zshrc
+echo -e "\n\n# GOENV" >> ~/.zprofile
 ```
 ```
-echo 'export GOENV_ROOT="$HOME/.goenv"' >> ~/.zshrc
+echo 'export GOENV_ROOT="$HOME/.goenv"' >> ~/.zprofile
 ```
 ```
-echo 'export PATH="$GOENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="$GOENV_ROOT/bin:$PATH"' >> ~/.zprofile
 ```
 ```
-echo 'eval "$(goenv init -)"' >> ~/.zshrc
+echo 'eval "$(goenv init -)"' >> ~/.zprofile
 ```
 ```
-echo 'export PATH="$GOROOT/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="$GOROOT/bin:$PATH"' >> ~/.zprofile
 ```
 ```
-echo 'export PATH="$PATH:$GOPATH/bin"' >> ~/.zshrc
+echo 'export PATH="$PATH:$GOPATH/bin"' >> ~/.zprofile
 ```
 ```
-echo -e "## GOENV" >> ~/.zshrc
+echo -e "## GOENV" >> ~/.zprofile
 ```
 ## INSTALLING A GO VERSION
 ```
@@ -45,22 +45,47 @@ echo 1.20.6 > ./.go-version
 goenv version
 ```
 
+# GOLANG DEBUGGING IN VSCODE
+```
+dlv debug main.go --headless --listen=:8181
+```
+
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Connect to external session",
+            "type": "go",
+            "debugAdapter": "dlv-dap",
+            "request": "attach",
+            "mode": "remote",
+            "port": 8181
+        }
+    ]
+}
+
+```
+
 # [PYENV](https://github.com/pyenv/pyenv)
 ## INSTALLING PYENV
 ```
 curl https://pyenv.run | bash
 ```
 ```
-echo -e "\n\n# PYENV" >> ~/.zshrc
+echo -e "\n\n# PYENV" >> ~/.zprofile
 ```
 ```
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
 ```
 ```
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
 ```
 ```
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zprofile
 ```
 ```
 sudo pacman -Syu --needed base-devel openssl zlib xz tk
@@ -72,10 +97,10 @@ RESTART SHELL
 git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 ```
 ```
-echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zprofile
 ```
 ```
-echo -e "## PYENV" >> ~/.zshrc
+echo -e "## PYENV" >> ~/.zprofile
 ```
 ## LISTING PYTHON VERSIONS AVAILABLE FOR INSTALLATION
 ```
